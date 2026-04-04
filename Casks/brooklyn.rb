@@ -16,5 +16,8 @@ cask "brooklyn" do
     system_command "/usr/bin/codesign",
                    args: ["--force", "--sign", "-",
                           "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
+    system_command "/usr/bin/killall",
+                   args: ["legacyScreenSaver"],
+                   must_succeed: false
   end
 end
