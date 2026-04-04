@@ -13,8 +13,5 @@ cask "brooklyn" do
     system_command "/usr/bin/xattr",
                    args: ["-d", "-r", "com.apple.quarantine",
                           "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
-    system_command "/usr/bin/codesign",
-                   args: ["--force", "--sign", "-",
-                          "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
   end
 end
