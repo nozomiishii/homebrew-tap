@@ -8,4 +8,10 @@ cask "brooklyn" do
   homepage "https://github.com/nozomiishii/Brooklyn"
 
   screen_saver "Brooklyn.saver"
+
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-d", "-r", "com.apple.quarantine",
+                          "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
+  end
 end
