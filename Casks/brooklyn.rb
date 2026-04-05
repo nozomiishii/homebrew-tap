@@ -33,7 +33,7 @@ cask "brooklyn" do
                    args: ["--force", "--sign", "-",
                           "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
     system_command "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
-                   args: ["-r", "-domain", "local", "-domain", "user"],
+                   args: ["-f", "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"],
                    must_succeed: false
     system_command "/usr/bin/killall",
                    args: ["legacyScreenSaver"],
