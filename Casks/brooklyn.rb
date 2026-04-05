@@ -1,6 +1,6 @@
 cask "brooklyn" do
-  version "0.1.15"
-  sha256 "4840ba981790b41fde2655b64a6290468014503d1cfebab4ceb8671a7f2119d0"
+  version "0.1.16"
+  sha256 "23be26e63abc72ca40806f175ea1ccef352ba0ae8bf78000dcc690a39be091b7"
 
   url "https://github.com/nozomiishii/Brooklyn/releases/download/v#{version}/Brooklyn.saver.zip"
   name "Brooklyn"
