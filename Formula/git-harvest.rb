@@ -1,8 +1,8 @@
 class GitHarvest < Formula
   desc "Clean up merged branches and worktrees (supports squash merges)"
   homepage "https://github.com/nozomiishii/git-harvest"
-  url "https://github.com/nozomiishii/git-harvest/archive/refs/tags/v0.1.18.tar.gz"
-  sha256 "a8d94dc4e0c8fc376c2cea001e2f9335c3a557f17bad06ccf083aa9370857209"
+  url "https://github.com/nozomiishii/git-harvest/archive/refs/tags/v0.1.19.tar.gz"
+  sha256 "86c26efaf6de6360c0478aa20c5725028a7d5cf57753cd5a87d77effa03f583c"
   license "MIT"
 
   def install
