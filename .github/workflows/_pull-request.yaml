@@ -1,0 +1,15 @@
+name: Pull Request title
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions:
+  pull-requests: read
+
+jobs:
+  pull-request:
+    uses: nozomiishii/workflows/.github/workflows/pull-request.yaml@7e6fb98cc189a7b5ef23eee616a04238c5d9a468 # v1.1.1
