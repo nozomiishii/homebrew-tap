@@ -19,9 +19,9 @@ cask "brooklyn" do
     system_command "/usr/bin/killall",
                    args: ["System Settings"],
                    must_succeed: false
+    cache_dir = "#{Dir.home}/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches"
     system_command "/bin/rm",
-                   args: ["-rf",
-                          "#{Dir.home}/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches"],
+                   args: ["-rf", cache_dir],
                    must_succeed: false
   end
 
@@ -32,7 +32,9 @@ cask "brooklyn" do
     system_command "/usr/bin/codesign",
                    args: ["--force", "--sign", "-",
                           "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
-    system_command "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
+    lsregister = "/System/Library/Frameworks/CoreServices.framework/" \
+                 "Frameworks/LaunchServices.framework/Support/lsregister"
+    system_command lsregister,
                    args: ["-f", "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"],
                    must_succeed: false
     system_command "/usr/bin/killall",
