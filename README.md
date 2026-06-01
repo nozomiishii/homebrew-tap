@@ -5,15 +5,8 @@ Homebrew formulae and casks for [nozomiishii](https://github.com/nozomiishii) pr
 ## Install
 
 ```sh
-brew install nozomiishii/tap/git-harvest
 brew install nozomiishii/tap/brooklyn
 ```
-
-## Available Formulae
-
-| Formula | Description |
-|---|---|
-| [git-harvest](https://github.com/nozomiishii/git-harvest) | Clean up merged branches and worktrees (supports squash merges) |
 
 ## Available Casks
 
