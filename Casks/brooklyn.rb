@@ -1,11 +1,13 @@
 cask "brooklyn" do
-  version "0.1.24"
-  sha256 "5cbc763a63b744034aaba8054faab6ee34435e9d5804008c60e83cd83bb5990e"
+  version "0.1.25"
+  sha256 "1114c96331d4633a023d414d98904f4d69b79b733200e43407a41e2c67a44c9e"
 
   url "https://github.com/nozomiishii/Brooklyn/releases/download/v#{version}/Brooklyn.saver.zip"
   name "Brooklyn"
   desc "Apple Brooklyn event inspired screen saver for Apple Silicon"
   homepage "https://github.com/nozomiishii/Brooklyn"
+
+  depends_on :macos
 
   screen_saver "Brooklyn.saver"
 
