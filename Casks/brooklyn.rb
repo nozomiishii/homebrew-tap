@@ -28,12 +28,6 @@ cask "brooklyn" do
   end
 
   postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-d", "-r", "com.apple.quarantine",
-                          "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
-    system_command "/usr/bin/codesign",
-                   args: ["--force", "--sign", "-",
-                          "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"]
     lsregister = "/System/Library/Frameworks/CoreServices.framework/" \
                  "Frameworks/LaunchServices.framework/Support/lsregister"
     system_command lsregister,
