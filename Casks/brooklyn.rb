@@ -9,25 +9,20 @@ cask "brooklyn" do
 
   depends_on :macos
 
-  # `screen_saver` ではなく `artifact` + `postflight_steps` の `symlink` で配置する。
-  # mise の brew-cask manager は `screen_saver` スタンザを解釈できず、`artifact` の
-  # target も Homebrew prefix 配下に限定するため、prefix へ置いてから home へリンクする。
-  # バンドルは 266 MB あるので、複製ではなくリンクにしてディスク使用量を据え置く。
+  # 配置の設計は docs/decisions/screen_saver を使わず宣言的ステップで cask を書く.md
   artifact "Brooklyn.saver", target: "#{HOMEBREW_PREFIX}/share/brooklyn/Brooklyn.saver"
 
-  # install step はサンドボックス子プロセスで走り、その HOME は一時ディレクトリに
-  # 差し替えられる (Library/Homebrew/cask/artifact/abstract_artifact.rb)。実 home を
-  # 指すには `~` や `$HOME` ではなく `base: :home` を使う必要がある。
   preflight_steps do
     terminate_process "legacyScreenSaver"
     terminate_process "WallpaperAgent"
     terminate_process "System Settings"
-    # 旧版のバンドルがキャッシュに残っていると System Settings が古いプレビューを出す
+    # 古いバンドルがキャッシュに残ると System Settings が旧版のプレビューを出す
     remove "Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches",
            base: :home, recursive: true
   end
 
   postflight_steps do
+    # install step の HOME はサンドボックスの一時ディレクトリ。実 home は base: :home で指す
     symlink "share/brooklyn/Brooklyn.saver", "Library/Screen Savers/Brooklyn.saver",
             source_base: :homebrew_prefix, target_base: :home,
             overwrite: true, remove_on_uninstall: true
