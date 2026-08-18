@@ -9,41 +9,33 @@ cask "brooklyn" do
 
   depends_on :macos
 
-  screen_saver "Brooklyn.saver"
+  # `screen_saver` ではなく `artifact` + `postflight_steps` の `symlink` で配置する。
+  # mise の brew-cask manager は `screen_saver` スタンザを解釈できず、`artifact` の
+  # target も Homebrew prefix 配下に限定するため、prefix へ置いてから home へリンクする。
+  # バンドルは 266 MB あるので、複製ではなくリンクにしてディスク使用量を据え置く。
+  artifact "Brooklyn.saver", target: "#{HOMEBREW_PREFIX}/share/brooklyn/Brooklyn.saver"
 
-  preflight do
-    system_command "/usr/bin/killall",
-                   args:         ["legacyScreenSaver"],
-                   must_succeed: false
-    system_command "/usr/bin/killall",
-                   args:         ["WallpaperAgent"],
-                   must_succeed: false
-    system_command "/usr/bin/killall",
-                   args:         ["System Settings"],
-                   must_succeed: false
-    cache_dir = "#{Dir.home}/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches"
-    system_command "/bin/rm",
-                   args:         ["-rf", cache_dir],
-                   must_succeed: false
+  # install step はサンドボックス子プロセスで走り、その HOME は一時ディレクトリに
+  # 差し替えられる (Library/Homebrew/cask/artifact/abstract_artifact.rb)。実 home を
+  # 指すには `~` や `$HOME` ではなく `base: :home` を使う必要がある。
+  preflight_steps do
+    terminate_process "legacyScreenSaver"
+    terminate_process "WallpaperAgent"
+    terminate_process "System Settings"
+    # 旧版のバンドルがキャッシュに残っていると System Settings が古いプレビューを出す
+    remove "Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches",
+           base: :home, recursive: true
   end
 
-  postflight do
-    lsregister = "/System/Library/Frameworks/CoreServices.framework/" \
-                 "Frameworks/LaunchServices.framework/Support/lsregister"
-    system_command lsregister,
-                   args:         ["-f", "#{Dir.home}/Library/Screen Savers/Brooklyn.saver"],
-                   must_succeed: false
-    system_command "/usr/bin/killall",
-                   args:         ["legacyScreenSaver"],
-                   must_succeed: false
+  postflight_steps do
+    symlink "share/brooklyn/Brooklyn.saver", "Library/Screen Savers/Brooklyn.saver",
+            source_base: :homebrew_prefix, target_base: :home,
+            overwrite: true, remove_on_uninstall: true
+    terminate_process "legacyScreenSaver"
   end
 
-  uninstall_preflight do
-    system_command "/usr/bin/killall",
-                   args:         ["legacyScreenSaver"],
-                   must_succeed: false
-    system_command "/usr/bin/killall",
-                   args:         ["WallpaperAgent"],
-                   must_succeed: false
+  uninstall_preflight_steps do
+    terminate_process "legacyScreenSaver"
+    terminate_process "WallpaperAgent"
   end
 end
