@@ -21,5 +21,5 @@ mise は `screen_saver` アーティファクトを解釈できず、generic art
 
 ## Consequences — 決定がもたらすもの
 
-- mise ではまだ入らない。残るのは `base: "home"` の未対応だけで、jdx/mise のパーサに足せば済む
-- Homebrew 側の配置先とディスク使用量は変わらない
+- mise ではまだ入らない。`unsupported preflight_steps paths base home` で止まる。パス base を解釈する箇所は 3 つあり、`copy` と `symlink` 用は `staged_path` / `appdir` / `homebrew_prefix` / `relative`、`run` 用はうち 3 つ、`remove` 用は `staged_path` だけ。`remove` の狭さは設計判断に見えるので、`home` を足すだけで済むとは限らない
+- バンドルの実体は Homebrew prefix へ移り、`~/Library/Screen Savers` は symlink になる。ディスク使用量は変わらず、システム設定からの選択と再生も従来どおり動くことを実機で確認した
