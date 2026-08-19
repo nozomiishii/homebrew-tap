@@ -22,19 +22,23 @@ cask "brooklyn" do
            base: :home, recursive: true
   end
 
+  # `symlink` の overwrite と remove_on_uninstall は Homebrew 6.0.15 で入った新しい
+  # キーワードで、それより古い環境では cask ごと読めなくなる。置き換えと後始末は
+  # `remove` で明示して、どのバージョンでも読める形にしておく
   postflight_steps do
-    # install step の HOME はサンドボックスの一時ディレクトリ。実 home は base: :home で指す。
-    # `symlink` の `overwrite` は rm_f 止まりで実ディレクトリを消せず EEXIST になるため、
-    # 手で展開した旧版が残っている環境のために先に消しておく
+    # install step の HOME はサンドボックスの一時ディレクトリ。実 home は base: :home で指す
     remove "Library/Screen Savers/Brooklyn.saver", base: :home, recursive: true
     symlink "share/brooklyn/Brooklyn.saver", "Library/Screen Savers/Brooklyn.saver",
-            source_base: :homebrew_prefix, target_base: :home,
-            overwrite: true, remove_on_uninstall: true
+            source_base: :homebrew_prefix, target_base: :home
     terminate_process "legacyScreenSaver"
   end
 
   uninstall_preflight_steps do
     terminate_process "legacyScreenSaver"
     terminate_process "WallpaperAgent"
+  end
+
+  uninstall_postflight_steps do
+    remove "Library/Screen Savers/Brooklyn.saver", base: :home, recursive: true
   end
 end
