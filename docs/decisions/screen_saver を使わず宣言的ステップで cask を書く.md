@@ -14,6 +14,7 @@ mise は `screen_saver` アーティファクトを解釈できず、generic art
 - `screen_saver` をやめ、`artifact` で prefix へ置いてから `postflight_steps` の `symlink` で home へリンクする。バンドルが 266 MB あるため複製はしない
 - Ruby ブロックの `preflight` / `postflight` を宣言的ステップへ移す
 - home を指すパスは `base: :home` で書く
+- home 側の置き換えは `symlink` の `overwrite` に任せず、先に `remove` で消す。`overwrite` は `rm_f` 止まりで、手で展開した実ディレクトリが残っていると `EEXIST` で install ごと落ちる
 - `api/cask/<token>.json` を tap にコミットし、Brooklyn の release workflow で cask の bump と同じコミットに載せる
 - `lsregister` での登録はやめる。prefix 配下のバンドルは Spotlight の索引外で `-10811` になる
 - `/Library/Screen Savers` へ置けば mise でも動くが、sudo が要るため採らない

@@ -83,6 +83,16 @@
         {
           "steps": [
             {
+              "paths": [
+                {
+                  "base": "home",
+                  "path": "Library/Screen Savers/Brooklyn.saver"
+                }
+              ],
+              "recursive": true,
+              "type": "remove"
+            },
+            {
               "source": {
                 "base": "homebrew_prefix",
                 "path": "share/brooklyn/Brooklyn.saver"
@@ -107,6 +117,12 @@
   "caveats": null,
   "caveats_rosetta": null,
   "depends_on": {
+    "arch": [
+      {
+        "type": "arm",
+        "bits": 64
+      }
+    ],
     "macos": {}
   },
   "conflicts_with": null,
@@ -129,24 +145,16 @@
   "languages": [],
   "ruby_source_path": "Casks/brooklyn.rb",
   "ruby_source_checksum": {
-    "sha256": "4d0d9acac7b0bfb53ee0ad9fa35e51fb38bc1d2a4e591f785d89afe0bd390431"
+    "sha256": "ea4e97919bcd18bbf91f94f6ebae1d1d82ea573c75b8c031ab5372b6446fe36d"
   },
   "variations": {},
   "supported_platforms": [
-    "golden_gate",
     "arm64_golden_gate",
-    "tahoe",
     "arm64_tahoe",
-    "sequoia",
     "arm64_sequoia",
-    "sonoma",
     "arm64_sonoma",
-    "ventura",
     "arm64_ventura",
-    "monterey",
     "arm64_monterey",
-    "big_sur",
-    "arm64_big_sur",
-    "catalina"
+    "arm64_big_sur"
   ]
 }
