@@ -8,9 +8,9 @@
   ],
   "desc": "Apple Brooklyn event inspired screen saver for Apple Silicon",
   "homepage": "https://github.com/nozomiishii/Brooklyn",
-  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v1.1.0/Brooklyn.saver.zip",
+  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v1.1.1/Brooklyn.saver.zip",
   "url_specs": {},
-  "version": "1.1.0",
+  "version": "1.1.1",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
@@ -21,7 +21,7 @@
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "62c2561106471fa5e7baa3b2ce2fce35696145900f97b115f717ae95c43f5c4f",
+  "sha256": "9efd49cf4c6d06d022a861979f30760c64ab2f79521fb42f04eecf08aa9bc850",
   "artifacts": [
     {
       "preflight_steps": [
@@ -29,14 +29,20 @@
           "steps": [
             {
               "name": "legacyScreenSaver",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             },
             {
               "name": "WallpaperAgent",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             },
             {
               "name": "System Settings",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             },
             {
@@ -59,10 +65,14 @@
           "steps": [
             {
               "name": "legacyScreenSaver",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             },
             {
               "name": "WallpaperAgent",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             }
           ]
@@ -105,6 +115,8 @@
             },
             {
               "name": "legacyScreenSaver",
+              "match": "name",
+              "attempts": 1,
               "type": "terminate_process"
             }
           ]
@@ -157,20 +169,11 @@
   "disable_replacement_formula": null,
   "disable_replacement_cask": null,
   "disable_args": null,
-  "tap_git_head": null,
+  "tap_git_head": "2a3ff0933f1781718045003a5cdde7e0c1c1fbac",
   "languages": [],
   "ruby_source_path": "Casks/brooklyn.rb",
   "ruby_source_checksum": {
-    "sha256": "49172660cee4febbb6cc2041c2305043fdc992bfa10c7c84b5377d5bee3ec49d"
+    "sha256": "6af2442f7cec817aab4346fa115aa91e8add4670b0b70c622d92e289a64a600c"
   },
-  "variations": {},
-  "supported_platforms": [
-    "arm64_golden_gate",
-    "arm64_tahoe",
-    "arm64_sequoia",
-    "arm64_sonoma",
-    "arm64_ventura",
-    "arm64_monterey",
-    "arm64_big_sur"
-  ]
+  "variations": {}
 }
