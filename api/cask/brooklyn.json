@@ -8,20 +8,20 @@
   ],
   "desc": "Apple Brooklyn event inspired screen saver for Apple Silicon",
   "homepage": "https://github.com/nozomiishii/Brooklyn",
-  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v2.1.0/Brooklyn.app.zip",
+  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v2.2.0/Brooklyn.app.zip",
   "url_specs": {},
-  "version": "2.1.0",
+  "version": "2.2.0",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
   "installed": null,
   "installed_time": null,
-  "bundle_version": "1",
-  "bundle_short_version": "2.0.0",
+  "bundle_version": null,
+  "bundle_short_version": null,
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "9fe086637cb149f9fe5ad7829d540464573c315b1ff660cd1c271ac7f69cc4cb",
+  "sha256": "6e7014ecb21874103b8758ac42c45276db2fffcc2b70408291bd8e4c5d385f50",
   "artifacts": [
     {
       "uninstall": [
@@ -79,15 +79,11 @@
   "disable_replacement_formula": null,
   "disable_replacement_cask": null,
   "disable_args": null,
-  "tap_git_head": "951ff3eac63a5a30408bbd050709fe8ace3ef2eb",
+  "tap_git_head": "db80a33aa11def93dfe9588926ca8cfc31739b91",
   "languages": [],
   "ruby_source_path": "Casks/brooklyn.rb",
   "ruby_source_checksum": {
-    "sha256": "094adfc36b91461a837f327120d6df40e8e5e63b501ce89f25d6a02bb2ed7dfa"
+    "sha256": "f97320ee82e00808fc3ae9f326f47441fdf8da4eb34851fa586b3772b8e0ada8"
   },
-  "variations": {},
-  "supported_platforms": [
-    "arm64_golden_gate",
-    "arm64_tahoe"
-  ]
+  "variations": {}
 }
