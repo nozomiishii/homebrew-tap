@@ -1,6 +1,6 @@
 cask "brooklyn" do
-  version "2.0.0"
-  sha256 "e7cc603df69283c15d30dbd4f0305b755595dd034c933fd168797359e5e0ab6e"
+  version "2.1.0"
+  sha256 "9fe086637cb149f9fe5ad7829d540464573c315b1ff660cd1c271ac7f69cc4cb"
 
   url "https://github.com/nozomiishii/Brooklyn/releases/download/v#{version}/Brooklyn.app.zip"
   name "Brooklyn"
@@ -8,7 +8,7 @@ cask "brooklyn" do
   homepage "https://github.com/nozomiishii/Brooklyn"
 
   depends_on arch: :arm64
-  depends_on :macos
+  depends_on macos: :tahoe
 
   # 2.0.0 から Brooklyn.app + ScreenSaver App Extension。extension の登録は
   # アプリの初回起動が行う。背景は Brooklyn 本体の
