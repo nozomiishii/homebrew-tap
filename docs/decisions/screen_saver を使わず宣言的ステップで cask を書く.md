@@ -1,7 +1,9 @@
 # screen_saver を使わず宣言的ステップで cask を書く
 
-Status: accepted
+Status: superseded
 Date: 2026-08-19
+
+2.0.0 で配布物が Brooklyn.app + ScreenSaver App Extension になり、cask は app アーティファクトへ移った。判断は Brooklyn 本体の [ADR](https://github.com/nozomiishii/Brooklyn/blob/main/docs/decisions/saver%20%E3%82%92%E3%82%84%E3%82%81%E3%82%A2%E3%83%97%E3%83%AA%20%2B%20ScreenSaver%20App%20Extension%20%E3%81%A7%E9%85%8D%E5%B8%83%E3%81%99%E3%82%8B.md)。`api/cask/<token>.json` の公開だけはこの repo の scripts/generate-cask-api.rb と Brooklyn の release workflow で続いている。
 
 ## Context — 判断を迫られた状況
 

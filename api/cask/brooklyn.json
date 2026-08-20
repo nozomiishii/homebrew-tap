@@ -8,135 +8,41 @@
   ],
   "desc": "Apple Brooklyn event inspired screen saver for Apple Silicon",
   "homepage": "https://github.com/nozomiishii/Brooklyn",
-  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v1.1.1/Brooklyn.saver.zip",
+  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v2.0.0/Brooklyn.app.zip",
   "url_specs": {},
-  "version": "1.1.1",
+  "version": "2.0.0",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
   "installed": null,
   "installed_time": null,
-  "bundle_version": null,
-  "bundle_short_version": null,
+  "bundle_version": "1",
+  "bundle_short_version": "1.1.1",
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "9efd49cf4c6d06d022a861979f30760c64ab2f79521fb42f04eecf08aa9bc850",
+  "sha256": "e7cc603df69283c15d30dbd4f0305b755595dd034c933fd168797359e5e0ab6e",
   "artifacts": [
     {
-      "preflight_steps": [
+      "uninstall": [
         {
-          "steps": [
-            {
-              "name": "legacyScreenSaver",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            },
-            {
-              "name": "WallpaperAgent",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            },
-            {
-              "name": "System Settings",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            },
-            {
-              "paths": [
-                {
-                  "base": "home",
-                  "path": "Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches"
-                }
-              ],
-              "recursive": true,
-              "type": "remove"
-            }
-          ]
+          "quit": "dev.nozomiishii.brooklyn"
         }
       ]
     },
     {
-      "uninstall_preflight_steps": [
-        {
-          "steps": [
-            {
-              "name": "legacyScreenSaver",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            },
-            {
-              "name": "WallpaperAgent",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "artifact": [
-        "Brooklyn.saver",
-        {
-          "target": "$HOMEBREW_PREFIX/share/brooklyn/Brooklyn.saver"
-        }
+      "app": [
+        "Brooklyn.app"
       ],
-      "target": "$HOMEBREW_PREFIX/share/brooklyn/Brooklyn.saver"
+      "target": "/Applications/Brooklyn.app"
     },
     {
-      "postflight_steps": [
+      "zap": [
         {
-          "steps": [
-            {
-              "paths": [
-                {
-                  "base": "home",
-                  "path": "Library/Screen Savers/Brooklyn.saver"
-                }
-              ],
-              "recursive": true,
-              "type": "remove"
-            },
-            {
-              "source": {
-                "base": "homebrew_prefix",
-                "path": "share/brooklyn/Brooklyn.saver"
-              },
-              "target": {
-                "base": "home",
-                "path": "Library/Screen Savers/Brooklyn.saver"
-              },
-              "type": "symlink"
-            },
-            {
-              "name": "legacyScreenSaver",
-              "match": "name",
-              "attempts": 1,
-              "type": "terminate_process"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "uninstall_postflight_steps": [
-        {
-          "steps": [
-            {
-              "paths": [
-                {
-                  "base": "home",
-                  "path": "Library/Screen Savers/Brooklyn.saver"
-                }
-              ],
-              "recursive": true,
-              "type": "remove"
-            }
+          "trash": [
+            "~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/dev.nozomiishii.brooklyn.*.plist",
+            "~/Library/Containers/dev.nozomiishii.brooklyn.extension",
+            "~/Library/Screen Savers/Brooklyn.saver"
           ]
         }
       ]
@@ -169,11 +75,20 @@
   "disable_replacement_formula": null,
   "disable_replacement_cask": null,
   "disable_args": null,
-  "tap_git_head": "2a3ff0933f1781718045003a5cdde7e0c1c1fbac",
+  "tap_git_head": "becece9356a655548590ca55d67bd57016d0ba33",
   "languages": [],
   "ruby_source_path": "Casks/brooklyn.rb",
   "ruby_source_checksum": {
-    "sha256": "6af2442f7cec817aab4346fa115aa91e8add4670b0b70c622d92e289a64a600c"
+    "sha256": "46dc052e9b608af34e3cf6a5000a202452059fe7f92f3516e2eac241c6227446"
   },
-  "variations": {}
+  "variations": {},
+  "supported_platforms": [
+    "arm64_golden_gate",
+    "arm64_tahoe",
+    "arm64_sequoia",
+    "arm64_sonoma",
+    "arm64_ventura",
+    "arm64_monterey",
+    "arm64_big_sur"
+  ]
 }
