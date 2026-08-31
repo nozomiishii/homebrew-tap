@@ -15,6 +15,13 @@ cask "brooklyn" do
   # docs/decisions/saver をやめアプリ + ScreenSaver App Extension で配布する.md
   app "Brooklyn.app"
 
+  # 同じパスへの入れ替えでは WallpaperAgent が古い解決済みキャッシュのまま
+  # extension を起動し、スクリーンセーバーが黒画面になる。再起動で捨てさせる。
+  # 実測の記録は Brooklyn 本体の docs/architecture.md
+  postflight_steps do
+    terminate_process "WallpaperAgent"
+  end
+
   uninstall quit: "dev.nozomiishii.brooklyn"
 
   zap trash: [
