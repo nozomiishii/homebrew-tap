@@ -8,9 +8,9 @@
   ],
   "desc": "Apple Brooklyn event inspired screen saver for Apple Silicon",
   "homepage": "https://github.com/nozomiishii/Brooklyn",
-  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v2.2.3/Brooklyn.app.zip",
+  "url": "https://github.com/nozomiishii/Brooklyn/releases/download/v2.3.1/Brooklyn.app.zip",
   "url_specs": {},
-  "version": "2.2.3",
+  "version": "2.3.1",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
@@ -21,7 +21,7 @@
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "b7413116e52a8774346f4576c6a062ca17cca980945edf60a97cc023e06cc85d",
+  "sha256": "240640cdddb849fd42d885c4ab09a1a0677b436d5bd2b57739c147db7fda23a8",
   "artifacts": [
     {
       "uninstall": [
@@ -42,8 +42,6 @@
           "steps": [
             {
               "name": "WallpaperAgent",
-              "match": "name",
-              "attempts": 1,
               "type": "terminate_process"
             }
           ]
@@ -93,11 +91,15 @@
   "disable_replacement_formula": null,
   "disable_replacement_cask": null,
   "disable_args": null,
-  "tap_git_head": "b83a73fbddcbcbdc934b9212f9a9255d42e17b5e",
+  "tap_git_head": "9a3ded8a5353637612cf436bbfebfa48e4d47c98",
   "languages": [],
   "ruby_source_path": "Casks/brooklyn.rb",
   "ruby_source_checksum": {
-    "sha256": "f6e34ac6b9e157c2ad53e25c96aa56ab95cb666a00cc7ad5aebad1f36e07be87"
+    "sha256": "5dbf279e201151fab17f01dce2feb5da1f255c917ba74dc20ec8c1e30ee76433"
   },
-  "variations": {}
+  "variations": {},
+  "supported_platforms": [
+    "arm64_golden_gate",
+    "arm64_tahoe"
+  ]
 }
