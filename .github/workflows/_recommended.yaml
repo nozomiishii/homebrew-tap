@@ -16,6 +16,23 @@ concurrency:
 permissions: {}
 
 jobs:
+  cask-api:
+    name: Validate cask API generation
+    runs-on: macos-26
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Generate cask API metadata
+        run: |
+          brew --version
+          brew ruby scripts/generate-cask-api.rb nozomiishii/tap
+
   recommended:
     permissions:
       contents: read # required by actions/checkout

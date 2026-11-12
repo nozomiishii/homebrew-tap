@@ -26,7 +26,7 @@ Homebrew::API.with_no_api_env do
   newest_macos = MacOSVersion.new(HOMEBREW_MACOS_NEWEST_SUPPORTED).to_sym
   Homebrew::SimulateSystem.with(os: newest_macos, arch: :arm) do
     cask_paths.each do |path|
-      cask = Cask::CaskLoader.from_path(path)
+      cask = Cask::CaskLoader::FromPathLoader.new(path).load(config: nil)
       hash = cask.to_hash_with_variations
 
       # 読み込み元のパスで変わる値を固定し、どこで生成しても同じ JSON にする
